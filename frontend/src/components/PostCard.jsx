@@ -18,11 +18,9 @@ function PostCard({ post, index, onClick }) {
       style={{ animationDelay: `${delay}ms` }}
       aria-label={`Post ${post.postId}: ${post.title}`}
     >
-      {/* Color accent bar */}
       <div className="card-accent" style={{ background: color }} />
 
       <div className="card-inner">
-        {/* Header row */}
         <div className="card-header">
           <span className="card-id">#{post.postId}</span>
           <span className="card-user" style={{ color }}>
@@ -30,15 +28,12 @@ function PostCard({ post, index, onClick }) {
           </span>
         </div>
 
-        {/* Title */}
         <h3 className="card-title">{post.title}</h3>
 
-        {/* Body preview */}
         <p className="card-body">
           {post.body.length > 100 ? post.body.substring(0, 100) + '…' : post.body}
         </p>
 
-        {/* Footer */}
         <div className="card-footer">
           <span className="card-read">Read more</span>
           <span className="card-arrow">→</span>

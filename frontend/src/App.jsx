@@ -134,12 +134,10 @@ function App() {
 
   return (
     <div className="app">
-      {/* Ambient background orbs */}
       <div className="bg-orb orb-1" />
       <div className="bg-orb orb-2" />
       <div className="bg-orb orb-3" />
 
-      {/* ── Header ── */}
       <header className="header">
         <div className="header-inner">
           <a href="/" className="logo" aria-label="NoDoubt App Home">
@@ -156,9 +154,7 @@ function App() {
         </div>
       </header>
 
-      {/* ── Main Content ── */}
       <main className="main" id="main-content">
-        {/* Hero */}
         <section className="hero" aria-label="Hero section">
           <div className="hero-badge">📡 Powered by WebSockets + MongoDB</div>
           <h1 className="hero-title">
@@ -178,10 +174,8 @@ function App() {
           </p>
         </section>
 
-        {/* Search */}
         <SearchBar onSearch={handleSearch} isSearching={searchLoading} wsConnected={wsConnected} />
 
-        {/* Results metadata */}
         {!loading && !error && (
           <div className="results-meta" aria-live="polite">
             {searchQuery ? (
@@ -200,7 +194,6 @@ function App() {
           </div>
         )}
 
-        {/* States: Loading / Error / Grid */}
         {loading ? (
           <div className="state-container" aria-busy="true">
             <div className="loader">
@@ -239,7 +232,6 @@ function App() {
         )}
       </main>
 
-      {/* ── Post Detail Modal ── */}
       {selectedPost && (
         <div
           className="modal-overlay"
@@ -267,10 +259,9 @@ function App() {
         </div>
       )}
 
-      {/* ── Footer ── */}
       <footer className="footer">
         <p>
-          Built with ⚡ React · Express · MongoDB · WebSockets &nbsp;|&nbsp;
+          Built with React · Express · MongoDB · WebSockets &nbsp;|&nbsp;
           <a
             href="https://jsonplaceholder.typicode.com"
             target="_blank"
