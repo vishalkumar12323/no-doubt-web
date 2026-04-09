@@ -1,0 +1,14 @@
+# Render deployment config for WebSocket server
+
+services:
+  - type: web
+    name: nodoubt-ws-server
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/wsServer.js
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: PORT
+        value: 10000
