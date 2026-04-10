@@ -2,9 +2,9 @@
 
 > A full-stack web application built with React, Node.js/Express, MongoDB, and WebSockets. Posts are fetched from the JSONPlaceholder API, stored in MongoDB Atlas, and displayed on a premium dark-mode React frontend with real-time search powered by WebSockets.
 
-🔗 **Live Frontend:** `https://your-frontend.vercel.app`  
-🔗 **Live Backend API:** `https://your-backend.vercel.app`  
-⚡ **WebSocket Server:** `wss://your-ws.onrender.com`
+🔗 **Live Frontend:** `https://no-doubt-web.vercel.app/`  
+🔗 **Live Backend API:** `https://no-doubt-web-1dv5.vercel.app/`  
+⚡ **WebSocket Server:** `https://no-doubt-web-1.onrender.com/`
 
 ---
 
@@ -48,15 +48,15 @@
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/yourusername/nodoubt-app.git
-cd nodoubt-app
+git clone https://github.com/vishalkumar12323/no-doubt-web.git
+cd no-doubt-web
 ```
 
 ### 2. Backend setup
 ```bash
 cd backend
 cp .env.example .env
-# Edit .env — replace <db_password> with your actual Atlas password
+# Edit .env — replace <username>&<db_password> with your actual MongoDB Atlas username and password
 npm install
 npm run dev          # Starts REST API on http://localhost:5000
 ```
@@ -70,7 +70,6 @@ npm run ws           # Starts WebSocket server on ws://localhost:8080
 ### 3. Frontend setup
 ```bash
 cd frontend
-# .env is already configured for local dev
 npm install
 npm run dev          # Opens http://localhost:3000
 ```
@@ -84,7 +83,7 @@ npm run dev          # Opens http://localhost:3000
 ### Backend (`backend/.env`)
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `MONGODB_URI` | MongoDB Atlas connection string | `mongodb+srv://user:<password>@cluster.mongodb.net/nodoubt-app` |
+| `MONGODB_URI` | MongoDB Atlas connection string | `mongodb+srv://<username>:<password>@cluster.mongodb.net/nodoubt-app` |
 | `PORT` | REST API port | `5000` |
 | `WS_PORT` | WebSocket server port | `8080` |
 
@@ -122,38 +121,9 @@ npm run dev          # Opens http://localhost:3000
   "type": "results",
   "query": "your search term",
   "count": 5,
-  "posts": [...]
+  "posts": [{}, {}, ...]
 }
 ```
-
----
-
-## ☁️ Deployment
-
-### Backend REST API → Vercel
-1. Push repo to GitHub
-2. Go to [vercel.com](https://vercel.com) → New Project → Import repo
-3. Set **Root Directory** to `backend`
-4. Add env variable: `MONGODB_URI = your-atlas-connection-string`
-5. Deploy
-
-### WebSocket Server → Render
-1. Go to [render.com](https://render.com) → New Web Service
-2. Connect your GitHub repo
-3. Set:
-   - **Root Directory:** `backend`
-   - **Build Command:** `npm install`
-   - **Start Command:** `node src/wsServer.js`
-4. Add env variable: `MONGODB_URI = your-atlas-connection-string`
-5. Deploy and copy the service URL (e.g. `wss://nodoubt-ws.onrender.com`)
-
-### Frontend → Vercel
-1. Go to [vercel.com](https://vercel.com) → New Project
-2. Set **Root Directory** to `frontend`
-3. Add env variables:
-   - `VITE_API_URL = https://your-backend.vercel.app`
-   - `VITE_WS_URL = wss://your-ws.onrender.com`
-4. Deploy
 
 ---
 
@@ -161,7 +131,7 @@ npm run dev          # Opens http://localhost:3000
 
 | Layer | Technology |
 |-------|------------|
-| Frontend | React 18, Vite, Vanilla CSS |
+| Frontend | React 18, Vite, CSS |
 | Backend | Node.js, Express 4 |
 | Database | MongoDB Atlas (Mongoose) |
 | WebSocket | `ws` library |
@@ -173,4 +143,3 @@ npm run dev          # Opens http://localhost:3000
 ## 📝 Notes
 - The backend auto-seeds posts from JSONPlaceholder on startup if MongoDB is empty
 - WebSocket falls back to local search if the connection is unavailable
-- Never commit `.env` files — they are in `.gitignore`
